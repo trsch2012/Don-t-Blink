@@ -12,13 +12,16 @@ namespace DontBlink.API.Code
         {
             get
             {
-                if (System.Web.HttpContext.Current.Session["Sightings"] == null) return null;
+                if (HttpContext.Current.Session["Sightings"] == null)
+                {
+                    HttpContext.Current.Session["Sightings"] = new List<SightingModel>();
+                }
                 
-                return (List<SightingModel>)System.Web.HttpContext.Current.Session["Sightings"];
+                return (List<SightingModel>)HttpContext.Current.Session["Sightings"];
             }
             set
             {
-                System.Web.HttpContext.Current.Session["Sightings"] = value;
+                HttpContext.Current.Session["Sightings"] = value;
             }
         }
     }

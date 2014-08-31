@@ -1,10 +1,13 @@
-﻿using DontBlink.API.Code;
+﻿using System.IO;
+using System.Web;
+using System.Web.Mvc;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using DontBlink.API.Code;
 using DontBlink.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace DontBlink.API.Controllers
@@ -32,17 +35,28 @@ namespace DontBlink.API.Controllers
         }
 
         // POST: api/Sighting
-        public void Post([FromBody]SightingModel value)
+        public SightingModel Post([FromBody]SightingModel value)
         {
             try
             {
                 value.Id = SessionStateSink.Sightings.Count;
-                SessionStateSink.Sightings.Add(value);
+               // SessionStateSink.Sightings.Add(value);
+                if (value.Base64ImageString != null)
+                {
+                    byte[] data = Convert.FromBase64String(value.Base64ImageString);
+                    Cloudinary cloudinary = new Cloudinary("cloudinary://334511462279285:uPmtzU2peDdn0sEXV0Z05C5QiO8@schluect-com");
+                    cloudinary.Upload(new ImageUploadParams
+                    {
+                        File = new FileDescription("Test", new MemoryStream(data))
+                    });
+
+                    return new SightingModel();
+                }
             }
             catch (Exception)
             {
-
             }
+                return null;
         }
 
         // PUT: api/Sighting/5
