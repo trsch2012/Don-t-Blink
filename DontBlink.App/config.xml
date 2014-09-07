@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="com.schluect.DontBlink.App" version="1.0.0.0" xmlns="http://www.w3.org/ns/widgets">
-  <name><![CDATA[Don&#39;t Blink]]></name>
+  <name>Dont Blink</name>
   <description>
     A blank project that uses Apache Cordova to help you build an app that targets multiple mobile platforms: Android, iOS, Windows, and Windows Phone.
   </description>
@@ -9,6 +9,7 @@
   </author>
   <content src="index.html" />
   <access origin="http://*.schluect.com" />
+  <access origin="http://*.azurewebsites.net" />
   <preference name="SplashScreen" value="screen" />
   <preference name="Orientation" value="portrait" />
   <vs:features>
@@ -17,5 +18,9 @@
     <vs:feature>org.apache.cordova.dialogs@0.2.8</vs:feature>
     <vs:feature>org.apache.cordova.network-information@0.2.10</vs:feature>
   </vs:features>
-  <vs:platformSpecificValues />
+  <vs:platformSpecificValues>
+    <vs:platformSpecificWidget platformName="windows8">
+      <vs:name>Dont Blink</vs:name>
+    </vs:platformSpecificWidget>
+  </vs:platformSpecificValues>
 </widget>

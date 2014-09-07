@@ -21,11 +21,11 @@ namespace DontBlink.API.Controllers
         }
 
         // GET: api/Sighting/5
-        public SightingModel Get(int id)
+        public SightingModel Get(Guid id)
         {
             try
             {
-                return SightingHelper.GenerateSightingHelperList().First(x => x.Id == id);
+                return SightingHelper.GenerateSightingHelperList().First(x => x.Id.Equals(id));
             }
             catch(Exception){
 
@@ -39,7 +39,7 @@ namespace DontBlink.API.Controllers
         {
             try
             {
-                value.Id = SessionStateSink.Sightings.Count;
+                value.Id = Guid.NewGuid();
                // SessionStateSink.Sightings.Add(value);
                 if (value.Base64ImageString != null)
                 {
@@ -60,7 +60,7 @@ namespace DontBlink.API.Controllers
         }
 
         // PUT: api/Sighting/5
-        public void Put(int id, [FromBody]SightingModel value)
+        public void Put(Guid id, [FromBody]SightingModel value)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace DontBlink.API.Controllers
         }
 
         // DELETE: api/Sighting/5
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             try
             {
