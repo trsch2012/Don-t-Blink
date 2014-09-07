@@ -9,7 +9,7 @@ namespace DontBlink.API.Code
     public static class SightingHelper
     {
         private static Random rand = new Random();
-        public static SightingModel GenerateSightingHelper(int id)
+        public static SightingModel GenerateSightingHelper(Guid id)
         {
             double[] coords = GetRandomGeoCoords();
             string title = Ipsum.GetPhrase(3);
@@ -31,16 +31,16 @@ namespace DontBlink.API.Code
             {
                 var listing = new List<SightingModel>
                 {
-                    GenerateSightingHelper(1),
-                    GenerateSightingHelper(2),
-                    GenerateSightingHelper(3),
-                    GenerateSightingHelper(4),
-                    GenerateSightingHelper(5),
-                    GenerateSightingHelper(6),
-                    GenerateSightingHelper(7),
-                    GenerateSightingHelper(8),
-                    GenerateSightingHelper(9),
-                    GenerateSightingHelper(10)
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid()),
+                    GenerateSightingHelper(Guid.NewGuid())
                 };
 
                 SessionStateSink.Sightings = listing;            

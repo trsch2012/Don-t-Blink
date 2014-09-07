@@ -13,6 +13,17 @@
     <p id="base"></p>
     <input type="file" name="file" accept="image/*;capture=camera" />
 </form>
+<form>
+    <label>Title</label>
+    <input name="Title" type="text"/>
+    <label>Description</label>
+    <input name="Description" type="text" />
+    <label>Lat</label>
+    <input name="Lat" type="text" />
+    <label>Long</label>
+    <input name="Long" type="text" />
+    <button type="button" onclick="create()">Submit</button>
+</form>
 @section scripts{
     <script src="@Url.Content("~/Scripts/test.js")"></script>
     <script>
